@@ -164,7 +164,7 @@ def static getBuildNumber() {
     else if (System.getenv("DRONE_BUILD_NUMBER") != null) {
         return "${System.getenv("DRONE_BUILD_NUMBER")}"
     }
-    return "NIGHTLY"
+    return "NIGHTLY-SpeedPlus"
 }
 
 idea {
