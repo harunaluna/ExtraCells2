@@ -110,7 +110,7 @@ class PartGasImport extends PartFluidImport with IGasHandler{
   override def receiveGas(side: ForgeDirection, stack: GasStack, doTransfer: Boolean): Int = {
     if (stack == null || stack.amount <= 0 || ! canReceiveGas(side, stack.getGas))
       return 0
-    val amount = Math.min(stack.amount, 125 + this.speedState * 125)
+    val amount = Math.min(stack.amount, 12500 + this.speedState * 12500)
     val gasStack = GasUtil.createAEFluidStack(stack.getGas, amount)
     val notInjected = {
       if (getGridBlock == null) {

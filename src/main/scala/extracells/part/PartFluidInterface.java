@@ -207,7 +207,7 @@ public class PartFluidInterface extends PartECBase implements IFluidHandler,
 	private IAEItemStack toExport = null;
 
 	private final Item encodedPattern = AEApi.instance().definitions().items().encodedPattern().maybeItem().orNull();
-	private FluidTank tank = new FluidTank(10000) {
+	private FluidTank tank = new FluidTank(64000) {
 		@Override
 		public FluidTank readFromNBT(NBTTagCompound nbt) {
 			if (!nbt.hasKey("Empty")) {
@@ -432,14 +432,14 @@ public class PartFluidInterface extends PartECBase implements IFluidHandler,
 							.translateToLocal("extracells.tooltip.empty1"));
 			list.add(StatCollector
 					.translateToLocal("extracells.tooltip.amount")
-					+ ": 0mB / 10000mB");
+					+ ": 0mB / 64000mB");
 		} else {
 			list.add(StatCollector.translateToLocal("extracells.tooltip.fluid")
 					+ ": " + fluid.getLocalizedName());
 			list.add(StatCollector
 					.translateToLocal("extracells.tooltip.amount")
 					+ ": "
-					+ fluid.amount + "mB / 10000mB");
+					+ fluid.amount + "mB / 64000mB");
 		}
 		return list;
 	}
@@ -931,7 +931,7 @@ public class PartFluidInterface extends PartECBase implements IFluidHandler,
 		if (this.tank.getFluid() != null
 				&& FluidRegistry.getFluid(this.fluidFilter) != this.tank
 						.getFluid().getFluid()) {
-			FluidStack s = this.tank.drain(125, false);
+			FluidStack s = this.tank.drain(12500, false);
 			if (s != null) {
 				IAEFluidStack notAdded = storage.getFluidInventory()
 						.injectItems(
@@ -968,7 +968,7 @@ public class PartFluidInterface extends PartECBase implements IFluidHandler,
 							.storage()
 							.createFluidStack(
 									new FluidStack(FluidRegistry
-											.getFluid(this.fluidFilter), 125)),
+											.getFluid(this.fluidFilter), 12500)),
 					Actionable.SIMULATE, new MachineSource(this));
 			if (extracted == null)
 				return TickRateModulation.URGENT;
